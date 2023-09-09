@@ -1,0 +1,17 @@
+<!--<p [ngStyle]="{backgroundColor: getColor()}">-->
+<!--	Server {{serverId}} status "{{getServerStatus()}}"-->
+<!--</p>-->
+
+<div class="server">
+  <div
+    [ngClass]="{
+      online: serverStatus === 'online',
+      offline: serverStatus === 'offline'
+    }"
+  >
+    Server {{ serverId }} status "{{ getServerStatus() }}"
+  </div>
+  <div [ngClass]="getClass()">
+    Server {{ serverId }} status "{{ getServerStatus() }}"
+  </div>
+</div>
