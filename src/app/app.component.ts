@@ -1,28 +1,19 @@
 import { Component } from '@angular/core';
+import { TServer } from './server-element/server-element.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  serverElements = [];
-  newServerName = '';
-  newServerContent = '';
+  serverElements: TServer[] = [
+    { type: 'server', name: '1', content: '1' },
+    { type: 'blueprint', name: '2', content: '2' },
+    { type: 'server', name: '3', content: '3' },
+  ];
 
-  onAddServer() {
-    this.serverElements.push({
-      type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
-  }
-
-  onAddBlueprint() {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+  onServerAdded(newServer: TServer) {
+    this.serverElements.push(newServer);
   }
 }
