@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import {
   TServer,
   TServerType,
@@ -11,17 +17,14 @@ import {
 })
 export class CockpitComponent {
   @Output() addServer = new EventEmitter<TServer>();
+  @ViewChild('serverNameInput') serverNameRef: ElementRef;
+  @ViewChild('serverContentInput') serverContentRef: ElementRef;
 
-  onAddServer(
-    type: TServerType,
-    nameInput: HTMLInputElement,
-    serverContentInput: HTMLInputElement,
-  ) {
-    console.log(nameInput.value);
+  onAddServer(type: TServerType) {
     this.addServer.emit({
       type,
-      name: nameInput.value,
-      content: serverContentInput.value,
+      name: this.serverNameRef.nativeElement.value,
+      content: this.serverContentRef.nativeElement.value,
     });
   }
 }

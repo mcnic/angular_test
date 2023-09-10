@@ -6,16 +6,10 @@
     <label>Server Content</label>
     <input type="text" class="form-control" #serverContentInput />
     <div class="d-flex gap-1">
-      <button
-        class="btn btn-primary"
-        (click)="onAddServer('server', serverNameInput, serverContentInput)"
-      >
+      <button class="btn btn-primary" (click)="onAddServer('server')">
         Add Server
       </button>
-      <button
-        class="btn btn-primary"
-        (click)="onAddServer('blueprint', serverNameInput, serverContentInput)"
-      >
+      <button class="btn btn-primary" (click)="onAddServer('blueprint')">
         Add Server Blueprint
       </button>
     </div>
