@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 export type TServerType = 'server' | 'blueprint';
 export type TServer = { type: TServerType; name: string; content: string };
@@ -8,6 +8,10 @@ export type TServer = { type: TServerType; name: string; content: string };
   templateUrl: './server-element.component.html',
   styleUrls: ['./server-element.component.scss'],
 })
-export class ServerElementComponent {
+export class ServerElementComponent implements OnChanges {
   @Input() element: TServer;
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngOnChanges', changes);
+  }
 }

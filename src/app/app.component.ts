@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TServer } from './server-element/server-element.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { TServer } from './server-element/server-element.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   serverElements: TServer[] = [
     { type: 'server', name: '1', content: '1' },
     { type: 'blueprint', name: '2', content: '2' },
@@ -15,5 +15,9 @@ export class AppComponent {
 
   onServerAdded(newServer: TServer) {
     this.serverElements.push(newServer);
+  }
+
+  ngOnInit() {
+    console.log('init');
   }
 }
