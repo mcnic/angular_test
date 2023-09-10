@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TServer } from './server-element/server-element.component';
 
 @Component({
@@ -6,18 +6,21 @@ import { TServer } from './server-element/server-element.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   serverElements: TServer[] = [
     { type: 'server', name: '1', content: '1' },
     { type: 'blueprint', name: '2', content: '2' },
-    { type: 'server', name: '3', content: '3' },
   ];
 
   onServerAdded(newServer: TServer) {
     this.serverElements.push(newServer);
   }
 
-  ngOnInit() {
-    console.log('init');
+  onChangeFirst() {
+    this.serverElements[0].name = 'Changed!';
+  }
+
+  onDestroyFirst() {
+    this.serverElements.splice(0, 1);
   }
 }

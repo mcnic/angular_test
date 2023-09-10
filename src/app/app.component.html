@@ -4,15 +4,24 @@
 
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onChangeFirst()">
+        Change first Element
+      </button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">
+        Destroy first Component
+      </button>
       <app-server-element
-        [element]="element"
-        *ngFor="let element of serverElements"
+        *ngFor="let serverElement of serverElements"
+        [srvElement]="serverElement"
+        [name]="serverElement.name"
       >
-        <p>
-          <strong *ngIf="element.type === 'server'" style="color: red">{{
-            element.content
+        <p #contentParagraph>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+            serverElement.content
           }}</strong>
-          <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+          <em *ngIf="serverElement.type === 'blueprint'">{{
+            serverElement.content
+          }}</em>
         </p>
       </app-server-element>
     </div>
